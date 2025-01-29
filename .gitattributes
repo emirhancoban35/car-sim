@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+D:/CarSim/car-sim/Assets/Assets/Versatile[[:space:]]Studio[[:space:]]Assets/Demo[[:space:]]City[[:space:]]By[[:space:]]Versatile[[:space:]]Studio/Scenes/demo_city_night/LightingData.asset filter=lfs diff=lfs merge=lfs -text
+D:/CarSim/car-sim/Assets/Assets/Versatile[[:space:]]Studio[[:space:]]Assets/Demo[[:space:]]City[[:space:]]By[[:space:]]Versatile[[:space:]]Studio/Scenes/demo_city_night/LightingasdasdasData.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Assets/Versatile[[:space:]]Studio[[:space:]]Assets/Demo[[:space:]]City[[:space:]]By[[:space:]]Versatile[[:space:]]Studio/Scenes/demo_city_night/LightingData.asset filter=lfs diff=lfs merge=lfs -text
