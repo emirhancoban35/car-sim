@@ -1,0 +1,11 @@
+Model Information:
+* title:	BMW E36 318ti
+* source:	https://sketchfab.com/3d-models/bmw-e36-318ti-f1097224b2c240e3903b20ec46d471b5
+* author:	Nothing Software (https://sketchfab.com/nothingsoftware)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "BMW E36 318ti" (https://sketchfab.com/3d-models/bmw-e36-318ti-f1097224b2c240e3903b20ec46d471b5) by Nothing Software (https://sketchfab.com/nothingsoftware) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
