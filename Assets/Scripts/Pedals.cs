@@ -1,3 +1,6 @@
-public enum Pedals{
-    accelerator,brake,clutch
-}   
+public enum Pedals
+{
+    Accelerator,
+    Brake,
+    Clutch
+}

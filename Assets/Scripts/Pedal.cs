@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Pedal
 {
-   public Pedals pedalName;
-   public bool isPressed;
+    public Pedals PedalName { get; private set; }
+    public bool IsPressed { get; private set; }
+    
+    public Pedal(Pedals pedalName)
+    {
+        PedalName = pedalName;
+        IsPressed = false;
+    }
+    
+    public void Press() => IsPressed = true;
+    public void Release() => IsPressed = false;
 }
