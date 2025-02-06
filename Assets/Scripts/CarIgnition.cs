@@ -1,46 +1,38 @@
 using UnityEngine;
 
 
-public class CarIgnition : MonoBehaviour
+public class CarIgnition
 {
-    private CarData carData;
-    private float keyPressTime;
-    private bool isHoldingKey;
+    private CarData _carData;
+    private float _keyPressTime;
+    private bool _isHoldingKey;
     
-    public void Initialize(CarData data)
-    {
-        carData = data;
-    }
-
-    void Update()
-    {
-        HandleIgnition();
-    }
+    public CarIgnition(CarData carData) => _carData = carData;
     
-    private void HandleIgnition()
+    public void HandleIgnition()
     {
         if (CarInputHandler.StartKeyDown())
         {
-            if (!carData.isCarRunning)
+            if (!_carData.isCarRunning)
             {
-                carData.isCarRunning = true;
+                _carData.isCarRunning = true;
                 Debug.Log("Araba çalıştı.");
             }
             else
             {
-                isHoldingKey = true;
-                keyPressTime = Time.time;
+                _isHoldingKey = true;
+                _keyPressTime = Time.time;
             }
         }
         
-        if (CarInputHandler.StartKeyUp() && isHoldingKey)
+        if (CarInputHandler.StartKeyUp() && _isHoldingKey && _carData.isMotorRunning == false)
         {
-            isHoldingKey = false;
-            float heldDuration = Time.time - keyPressTime;
+            _isHoldingKey = false;
+            float heldDuration = Time.time - _keyPressTime;
             
-            if (heldDuration >= 2.5f)
+            if (heldDuration >= 1.5f)
             {
-                carData.isMotorRunning = true;
+                _carData.isMotorRunning = true;
                 Debug.Log("Motor çalıştı.");
             }
             else
@@ -49,10 +41,10 @@ public class CarIgnition : MonoBehaviour
             }
         }
         
-        if (CarInputHandler.StopKeyDown() && carData.isCarRunning)
+        if (CarInputHandler.StopKeyDown() && _carData.isCarRunning)
         {
-            carData.isCarRunning = false;
-            carData.isMotorRunning = false;
+            _carData.isCarRunning = false;
+            _carData.isMotorRunning = false;
             Debug.Log("Araba kapandı.");
         }
     }

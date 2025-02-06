@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarPedal : MonoBehaviour
+public class CarPedal
 {
-    private CarData carData;
+    private CarData _carData;
     
-    public void Initialize(CarData data)
-    {
-        carData = data;
-    }
+    public CarPedal(CarData carData) => _carData = carData;
     
-    void Update()
+    public void HandlePedals()
     {
-        carData.isClutchPressed = CarInputHandler.PressClutch();
-        carData.isBrakePressed = CarInputHandler.PressBrake();
-        carData.isGasPressed = CarInputHandler.PressGas();
+        _carData.isClutchPressed = CarInputHandler.PressClutch();
+        _carData.isBrakePressed = CarInputHandler.PressBrake();
+        _carData.isGasPressed = CarInputHandler.PressGas();
     }
 }
