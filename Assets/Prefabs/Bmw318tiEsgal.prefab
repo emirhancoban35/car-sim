@@ -30848,9 +30848,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2026315597541773085}
   - component: {fileID: 1900184173123820362}
-  - component: {fileID: 1959306362412960807}
-  - component: {fileID: 7615704747137049571}
-  - component: {fileID: 1990219548203153504}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -30980,55 +30977,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1959306362412960807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5232879879141148167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3d4bf07074c48458ba6357c41fc429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_carName: 
-  m_carKm: 0
-  m_carYear: 
-  _currentSpeed: 0
-  _tachometer: 0
-  _fuelLevel: 0
-  _temperatureIndicator: 0
-  _isHandbrakeApplied: 0
-  _isCarRunning: 0
-  _gearStatus: 0
-  _isManual: 0
---- !u!114 &7615704747137049571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5232879879141148167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b3f99dbf334acb80efc25d74da8fb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rigidbody: {fileID: 1900184173123820362}
-  m_inputHandler: {fileID: 1990219548203153504}
---- !u!114 &1990219548203153504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5232879879141148167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac26357445fe403b97c2179665479f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5235827698872357121
 GameObject:
   m_ObjectHideFlags: 0

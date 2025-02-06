@@ -5,24 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0f4a8f3-96b3-4827-9e3f-6b4cfb2945cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarHandbrake.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarHandbrake.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarTransmission.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarTransmission.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GearStat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GearStat.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pedal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pedals.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bmw318tiEsgal.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bmw318tiEsgal.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarHandbrake.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarHandbrake.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarSteering.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarSteering.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarTransmission.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarTransmission.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DoorController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DoorController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GearStat.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GearStat.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedal.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedal.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedals.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pedals.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,18 +46,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CarSim/car-sim/Assets/Scripts/CarController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="SWEA" />
@@ -58,25 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;car-controller-test&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\emr-2\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\emr-2\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\emr-2\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\emr-2\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\emr-2\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\emr-2\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\unity\2022.3.47f1\Editor\Unity.exe" />
@@ -126,6 +132,7 @@
       <workItem from="1738186759647" duration="5702000" />
       <workItem from="1738192903513" duration="789000" />
       <workItem from="1738236977185" duration="1291000" />
+      <workItem from="1738842991275" duration="1354000" />
     </task>
     <servers />
   </component>
@@ -140,6 +147,7 @@
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

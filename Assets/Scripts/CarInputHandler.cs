@@ -1,11 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CarInputHandler : MonoBehaviour
+public static class CarInputHandler
 {
-    public float GetThrottleInput() => Input.GetAxis("Vertical");
-    public float GetBrakeInput() => Input.GetKey(KeyCode.Space) ? 1f : 0f;
-    public float GetSteeringInput() => Input.GetAxis("Horizontal");
-    public bool GetClutchInput() => Input.GetKey(KeyCode.LeftShift);
-    public bool GetHandbrakeInput() => Input.GetKey(KeyCode.B);
-    public bool GetIgnitionInput() => Input.GetKeyDown(KeyCode.E);
+    public static bool StartKeyDown() => Input.GetKeyDown(KeyCode.E);
+    public static bool StartKeyUp() => Input.GetKeyUp(KeyCode.E);
+    public static bool StopKeyDown() => Input.GetKeyDown(KeyCode.Q);
+    public static bool PressClutch() => Input.GetKey(KeyCode.Z);
+    public static bool PressBrake() => Input.GetKey(KeyCode.X);
+    public static bool PressGas() => Input.GetKey(KeyCode.C);
+    
 }
