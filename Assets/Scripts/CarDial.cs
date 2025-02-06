@@ -93,14 +93,14 @@ public class CarDial
         {
             if (_carData.tachometer < _minRPMForStop && !_carData.isGasPressed && !_carData.isClutchPressed)
             {
-                StopEngine();
+                // StopEngine();
             }
         }
         else
         {
             if (_carData.fuelLevel <= 0)
             {
-                StopEngine();
+                // StopEngine();
             }
         }
     }
