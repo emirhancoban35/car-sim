@@ -12,5 +12,6 @@ public static class CarInputHandler
     public static bool PressGas() => Input.GetKey(KeyCode.C);
     public static bool ShiftUpKey() => Input.GetKeyDown(KeyCode.V);
     public static bool ShiftDownKey() => Input.GetKeyDown(KeyCode.B);
+    public static float GetSteeringInput() => Input.GetAxis("Horizontal");
     
 }
