@@ -7,9 +7,9 @@ public class CarDial
     private readonly float _maxRPM = 7000f; // Kesici devre noktası
     private readonly float _minRPMForStop = 500f; // Stop etme eşiği
     private readonly float _gearRatioFactor = 0.8f; // Vites arttıkça RPM düşüş oranı
-    private readonly float _accelerationRate = 2500f; // Boştayken RPM artış hızı
-    private readonly float _decelerationRate = 1500f; // Boştayken RPM düşüş hızı
-    private readonly float _brakeDeceleration = 1000f; // Frenleme RPM düşüşü
+    private readonly float _accelerationRate = 3000f; // Boştayken RPM artış hızı
+    private readonly float _decelerationRate = 2000f; // Boştayken RPM düşüş hızı
+    private readonly float _brakeDeceleration = 1500f; // Frenleme RPM düşüşü
 
     public CarDial(CarData carData)
     {
@@ -34,51 +34,52 @@ public class CarDial
             {
                 _carData.tachometer += _accelerationRate * Time.deltaTime;
             }
-            else 
+            else
             {
                 float targetRPM = _carData.currentSpeed * _carData.gearStatus * _gearRatioFactor;
-                _carData.tachometer = Mathf.Lerp(_carData.tachometer, targetRPM, Time.deltaTime * 2);
+                _carData.tachometer = Mathf.Lerp(_carData.tachometer, targetRPM, Time.deltaTime * 3);
             }
         }
         else
         {
-            if (_carData.gearStatus == 0) 
+            if (_carData.gearStatus == 0)
             {
                 _carData.tachometer -= _decelerationRate * Time.deltaTime;
             }
-            else if (!_carData.isClutchPressed) 
+            else if (!_carData.isClutchPressed)
             {
                 _carData.tachometer -= _brakeDeceleration * Time.deltaTime;
             }
 
             if (_carData.gearStatus > 0 && !_carData.isGasPressed && !_carData.isClutchPressed)
             {
-                _carData.tachometer -= 500f * Time.deltaTime; 
-            }
-        
-            if (_carData.tachometer < _idleRPM && _carData.gearStatus == 0)
-            {
-                _carData.tachometer = _idleRPM; 
+                _carData.tachometer -= 700f * Time.deltaTime;
             }
         }
 
-        if (_carData.tachometer < _minRPMForStop && _carData.gearStatus > 0)
+        if (_carData.tachometer < _idleRPM && _carData.gearStatus == 0)
+        {
+            _carData.tachometer = _idleRPM;
+        }
+
+        if (_carData.tachometer < _minRPMForStop && _carData.gearStatus > 0 && !_carData.isClutchPressed)
         {
             StopEngine();
         }
 
         _carData.tachometer = Mathf.Clamp(_carData.tachometer, 0, _maxRPM);
     }
+
     private void UpdateSpeedometer()
     {
         if (_carData.isGasPressed && _carData.isMotorRunning)
         {
-            _carData.currentSpeed += (_carData.tachometer / 1000f) * Time.deltaTime;
+            _carData.currentSpeed += (_carData.tachometer / 1000f) * Time.deltaTime * 2;
         }
 
         if (_carData.isBrakePressed)
         {
-            _carData.currentSpeed -= 30f * Time.deltaTime;
+            _carData.currentSpeed -= 40f * Time.deltaTime;
         }
 
         _carData.currentSpeed = Mathf.Clamp(_carData.currentSpeed, 0f, GetMaxSpeedForGear(_carData.gearStatus));
@@ -87,15 +88,15 @@ public class CarDial
     private void CheckForEngineStop()
     {
         if (_carData.isClutchPressed) return;
-        
-        if (_carData.gearStatus > 0) 
+
+        if (_carData.gearStatus > 0)
         {
             if (_carData.tachometer < _minRPMForStop && !_carData.isGasPressed && !_carData.isClutchPressed)
             {
                 StopEngine();
             }
         }
-        else 
+        else
         {
             if (_carData.fuelLevel <= 0)
             {
@@ -103,7 +104,6 @@ public class CarDial
             }
         }
     }
-
 
     private void StopEngine()
     {

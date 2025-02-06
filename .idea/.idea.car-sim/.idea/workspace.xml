@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0f4a8f3-96b3-4827-9e3f-6b4cfb2945cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +110,7 @@
       <workItem from="1738236977185" duration="1291000" />
       <workItem from="1738842991275" duration="1354000" />
       <workItem from="1738844455085" duration="9473000" />
-      <workItem from="1738863410674" duration="3042000" />
+      <workItem from="1738863410674" duration="5039000" />
     </task>
     <servers />
   </component>
