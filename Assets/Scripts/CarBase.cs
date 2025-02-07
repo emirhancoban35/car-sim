@@ -7,6 +7,11 @@ public class CarBase : MonoBehaviour
     private CarPedal _carPedal;
     private CarTransmissionManager _carTransmissionManager;
     private CarDial _carDial;
+    private CarSteering _carSteering;
+
+    [Header("Steering")]
+    [SerializeField] private Transform steeringWheel;
+    [SerializeField] private WheelCollider[] frontWheels;
 
     private void Awake()
     {
@@ -14,6 +19,7 @@ public class CarBase : MonoBehaviour
         _carPedal = new CarPedal(carData);
         _carTransmissionManager = new CarTransmissionManager(carData);
         _carDial = new CarDial(carData);
+        _carSteering = new CarSteering(carData, steeringWheel, frontWheels);
 
         _carTransmissionManager.GenerateTransmission();
     }
@@ -24,6 +30,8 @@ public class CarBase : MonoBehaviour
         _carPedal.HandlePedals();
         _carTransmissionManager.HandleTransmission();
         _carDial.UpdateDial();
-        
+
+        float steeringInput = CarInputHandler.GetSteeringInput();
+        _carSteering.UpdateSteering(steeringInput);
     }
 }
