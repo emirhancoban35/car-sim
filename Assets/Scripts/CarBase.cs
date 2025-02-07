@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public class CarBase : MonoBehaviour
 {
     public CarData carData;
@@ -16,7 +14,7 @@ public class CarBase : MonoBehaviour
         _carPedal = new CarPedal(carData);
         _carTransmissionManager = new CarTransmissionManager(carData);
         _carDial = new CarDial(carData);
-        
+
         _carTransmissionManager.GenerateTransmission();
     }
 
@@ -26,6 +24,6 @@ public class CarBase : MonoBehaviour
         _carPedal.HandlePedals();
         _carTransmissionManager.HandleTransmission();
         _carDial.UpdateDial();
+        
     }
 }
-

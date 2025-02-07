@@ -16,7 +16,7 @@ MonoBehaviour:
   carKm: 0
   carYear: 
   currentSpeed: 0
-  tachometer: 0
+  tachometer: 800
   fuelLevel: 0
   temperatureIndicator: 0
   isClutchPressed: 0
@@ -25,5 +25,5 @@ MonoBehaviour:
   isHandbrakeApplied: 0
   isCarRunning: 1
   isMotorRunning: 1
-  gearStatus: 2
+  gearStatus: 0
   isManual: 1
