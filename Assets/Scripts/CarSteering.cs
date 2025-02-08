@@ -5,14 +5,16 @@ public class CarSteering
     private readonly CarData _carData;
     private readonly Transform _steeringWheel;
     private readonly WheelCollider[] _frontWheels;
-    
+
     private float _currentSteeringAngle;
     private Quaternion _initialSteeringWheelRotation;
-    
+    private float _steeringVelocity = 0f; // SmoothDamp için
+
     private const float MaxSteeringAngle = 35f; // Maksimum tekerlek dönüş açısı
-    private const float SteeringSpeed = 75f; // Direksiyon dönüş hızı
-    private const float ReturnToCenterSpeed = 80f; // Direksiyonun ortalanma hızı
-    private const float WheelSteeringRatio = 1.5f; // Direksiyon açısını tekerleklere oranla düşürme
+    private const float SteeringSpeed = 2f; // Direksiyon dönüş hızını düşürdük
+    private const float ReturnToCenterSpeed = 1.5f; // Direksiyonun ortalanma hızı daha yavaş
+    private const float WheelSteeringRatio = 1.8f; // Direksiyon açısını tekerleklere oranla düşürme
+    private const float SteeringSmoothTime = 0.2f; // Direksiyonun akıcı hareket etmesi için
 
     public CarSteering(CarData carData, Transform steeringWheel, WheelCollider[] frontWheels)
     {
@@ -25,12 +27,14 @@ public class CarSteering
 
     public void UpdateSteering(float steeringInput)
     {
-        // Direksiyon açısını hesapla
+        // Direksiyonun hedef açısını hesapla
         float targetSteeringAngle = steeringInput * MaxSteeringAngle;
-        _currentSteeringAngle = Mathf.Lerp(_currentSteeringAngle, targetSteeringAngle, SteeringSpeed * Time.deltaTime);
 
-        // Direksiyonu ortalama mantığı
-        if (Mathf.Abs(steeringInput) < 0.1f)
+        // Direksiyonun dönüşünü yavaşlat ve akıcı hale getir
+        _currentSteeringAngle = Mathf.SmoothDamp(_currentSteeringAngle, targetSteeringAngle, ref _steeringVelocity, SteeringSmoothTime);
+
+        // Eğer direksiyon bırakılmışsa (çok küçük bir input varsa), yavaşça sıfıra dönmeli
+        if (Mathf.Abs(steeringInput) < 0.05f)
         {
             _currentSteeringAngle = Mathf.Lerp(_currentSteeringAngle, 0, ReturnToCenterSpeed * Time.deltaTime);
         }
@@ -51,7 +55,7 @@ public class CarSteering
     {
         if (_steeringWheel != null)
         {
-            _steeringWheel.localRotation = _initialSteeringWheelRotation * Quaternion.Euler(0, 0, -_currentSteeringAngle * 10);
+            _steeringWheel.localRotation = _initialSteeringWheelRotation * Quaternion.Euler(0, 0, _currentSteeringAngle * 10);
         }
     }
 }
