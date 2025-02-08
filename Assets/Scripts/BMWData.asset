@@ -16,10 +16,10 @@ MonoBehaviour:
   carName: 
   carKm: 0
   carYear: 
-  currentSpeed: 70
-  tachometer: 855.99994
+  currentSpeed: 0
+  tachometer: 2227.1865
   fuelLevel: 70
-  temperatureIndicator: 40.248657
+  temperatureIndicator: 43.51742
   isClutchPressed: 0
   isBrakePressed: 0
   isGasPressed: 0
@@ -27,5 +27,5 @@ MonoBehaviour:
   isHandbrakeApplied: 0
   isCarRunning: 1
   isMotorRunning: 1
-  gearStatus: 3
+  gearStatus: 0
   isManual: 1
