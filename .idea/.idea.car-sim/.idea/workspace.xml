@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0f4a8f3-96b3-4827-9e3f-6b4cfb2945cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TransmissionMode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TransmissionMode.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AutomaticTransmission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AutomaticTransmission.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarTransmissionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CarTransmissionManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +118,7 @@
       <workItem from="1738870964148" duration="3140000" />
       <workItem from="1738959885377" duration="4345000" />
       <workItem from="1738967524868" duration="7000" />
-      <workItem from="1739014235761" duration="3566000" />
+      <workItem from="1739014235761" duration="4464000" />
     </task>
     <servers />
   </component>
