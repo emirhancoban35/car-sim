@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd99401ea8c0fcf408d39626672c617d, type: 3}
   m_Name: BMWData
   m_EditorClassIdentifier: 
+  isTestMode: 0
   carName: 
   carKm: 0
   carYear: 
   currentSpeed: 0
-  tachometer: 800
-  fuelLevel: 0
-  temperatureIndicator: 0
+  tachometer: 0
+  fuelLevel: 70
+  temperatureIndicator: 29.715626
   isClutchPressed: 0
   isBrakePressed: 0
   isGasPressed: 0
   isHandbrakeApplied: 0
   isCarRunning: 1
   isMotorRunning: 1
-  gearStatus: 0
+  gearStatus: 1
   isManual: 1

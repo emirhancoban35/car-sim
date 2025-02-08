@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CarData", menuName = "ScriptableObjects/Create New", order = 0)]
 public class CarData : ScriptableObject
 {
+    public bool isTestMode;
+    
     [Header("Car Info")]
     public string carName;
     public uint carKm;
@@ -20,8 +22,9 @@ public class CarData : ScriptableObject
     public bool isClutchPressed;
     public bool isBrakePressed;
     public bool isGasPressed;
-    
-    [Header("Car Status")]
+
+    [Header("Car Status")] 
+    public TransmissionMode transmissionMode;
     public bool isHandbrakeApplied;
     public bool isCarRunning;
     public bool isMotorRunning;

@@ -3,13 +3,16 @@ using UnityEngine;
 public class CarDial
 {
     private readonly CarData _carData;
-    private readonly float _idleRPM = 800f; // Rölanti devri
-    private readonly float _maxRPM = 7000f; // Kesici devre noktası
-    private readonly float _minRPMForStop = 500f; // Stop etme eşiği
-    private readonly float _gearRatioFactor = 0.8f; // Vites arttıkça RPM düşüş oranı
-    private readonly float _accelerationRate = 3000f; // Boştayken RPM artış hızı
-    private readonly float _decelerationRate = 2000f; // Boştayken RPM düşüş hızı
-    private readonly float _brakeDeceleration = 1500f; // Frenleme RPM düşüşü
+    private readonly float _idleRPM = 800f;
+    private readonly float _maxRPM = 7000f;
+    private readonly float _minRPMForStop = 500f;
+    private readonly float _gearRatioFactor = 0.8f;
+    private readonly float _accelerationRate = 3000f;
+    private readonly float _decelerationRate = 2000f;
+    private readonly float _brakeDeceleration = 1500f;
+    private readonly float _overheatThreshold = 120f;
+    private readonly float _heatIncreaseRate = 0.5f;
+    private readonly float _heatDecreaseRate = 0.2f;
 
     public CarDial(CarData carData)
     {
@@ -22,53 +25,48 @@ public class CarDial
         {
             UpdateTachometer();
             UpdateSpeedometer();
+            UpdateTemperature();
             CheckForEngineStop();
         }
     }
 
     private void UpdateTachometer()
     {
+        if (!_carData.isMotorRunning)
+        {
+            _carData.tachometer = 0;
+            return;
+        }
+
+        float targetRPM;
+
         if (_carData.isGasPressed)
         {
-            if (_carData.gearStatus == 0)
+            if (_carData.gearStatus == 0) // Boş viteste gaz veriliyorsa
             {
-                _carData.tachometer += _accelerationRate * Time.deltaTime;
+                targetRPM = Mathf.Min(_carData.tachometer + (_accelerationRate * Time.deltaTime), _maxRPM);
             }
-            else
+            else // Vitesteyken
             {
-                float targetRPM = _carData.currentSpeed * _carData.gearStatus * _gearRatioFactor;
-                _carData.tachometer = Mathf.Lerp(_carData.tachometer, targetRPM, Time.deltaTime * 3);
+                targetRPM = Mathf.Lerp(_carData.tachometer, _carData.currentSpeed * _carData.gearStatus * _gearRatioFactor, Time.deltaTime * 3);
             }
         }
-        else
+        else // Gaz verilmezse
         {
-            if (_carData.gearStatus == 0)
+            if (_carData.gearStatus == 0) // Boş viteste rölantiye düşmeli
             {
-                _carData.tachometer -= _decelerationRate * Time.deltaTime;
+                targetRPM = Mathf.Max(_carData.tachometer - (_decelerationRate * Time.deltaTime), _idleRPM);
             }
-            else if (!_carData.isClutchPressed)
+            else // Vitesteyken gaz kesilirse motor yavaşlamalı ama rölanti altına düşmemeli
             {
-                _carData.tachometer -= _brakeDeceleration * Time.deltaTime;
-            }
-
-            if (_carData.gearStatus > 0 && !_carData.isGasPressed && !_carData.isClutchPressed)
-            {
-                _carData.tachometer -= 700f * Time.deltaTime;
+                targetRPM = Mathf.Lerp(_carData.tachometer, _idleRPM + (_carData.currentSpeed * _gearRatioFactor), Time.deltaTime * 2);
             }
         }
 
-        if (_carData.tachometer < _idleRPM && _carData.gearStatus == 0)
-        {
-            _carData.tachometer = _idleRPM;
-        }
-
-        if (_carData.tachometer < _minRPMForStop && _carData.gearStatus > 0 && !_carData.isClutchPressed)
-        {
-            StopEngine();
-        }
-
-        _carData.tachometer = Mathf.Clamp(_carData.tachometer, 0, _maxRPM);
+        // Devir sınırlandırma
+        _carData.tachometer = Mathf.Clamp(targetRPM, _idleRPM, _maxRPM);
     }
+
 
     private void UpdateSpeedometer()
     {
@@ -85,31 +83,48 @@ public class CarDial
         _carData.currentSpeed = Mathf.Clamp(_carData.currentSpeed, 0f, GetMaxSpeedForGear(_carData.gearStatus));
     }
 
-    private void CheckForEngineStop()
+    private void UpdateTemperature()
     {
-        if (_carData.isClutchPressed) return;
-
-        if (_carData.gearStatus > 0)
+        if (_carData.isGasPressed)
         {
-            if (_carData.tachometer < _minRPMForStop && !_carData.isGasPressed && !_carData.isClutchPressed)
-            {
-                // StopEngine();
-            }
+            _carData.temperatureIndicator += _heatIncreaseRate * Time.deltaTime;
         }
         else
         {
-            if (_carData.fuelLevel <= 0)
-            {
-                // StopEngine();
-            }
+            _carData.temperatureIndicator -= _heatDecreaseRate * Time.deltaTime;
+        }
+
+        _carData.temperatureIndicator = Mathf.Clamp(_carData.temperatureIndicator, 20f, _overheatThreshold);
+    }
+
+    private void CheckForEngineStop()
+    {
+        if (_carData.isTestMode) return;
+
+        if (_carData.fuelLevel <= 0)
+        {
+            StopEngine("Yakıt bitti!");
+            return;
+        }
+
+        if (_carData.isManual && _carData.gearStatus > 0 && _carData.tachometer < _minRPMForStop && !_carData.isClutchPressed)
+        {
+            StopEngine("Düşük devirde motor stop etti!");
+            return;
+        }
+
+        if (_carData.temperatureIndicator >= _overheatThreshold)
+        {
+            StopEngine("Motor hararet yaptı!");
+            return;
         }
     }
 
-    private void StopEngine()
+    private void StopEngine(string reason)
     {
         _carData.isMotorRunning = false;
         _carData.tachometer = 0;
-        Debug.Log("Motor stop etti!");
+        Debug.Log($"Motor stop etti: {reason}");
     }
 
     private float GetMaxSpeedForGear(int gear)

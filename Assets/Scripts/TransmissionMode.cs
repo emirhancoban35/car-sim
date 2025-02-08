@@ -1,0 +1,1 @@
+public enum TransmissionMode { Neutral, Drive, Reverse }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CarBase : MonoBehaviour
+public class CarController : MonoBehaviour
 {
     public CarData carData;
     private CarIgnition _carIgnition;
@@ -8,6 +8,7 @@ public class CarBase : MonoBehaviour
     private CarTransmissionManager _carTransmissionManager;
     private CarDial _carDial;
     private CarSteering _carSteering;
+    private CarEngine _carEngine;
 
     [Header("Steering")]
     [SerializeField] private Transform steeringWheel;
@@ -20,6 +21,7 @@ public class CarBase : MonoBehaviour
         _carTransmissionManager = new CarTransmissionManager(carData);
         _carDial = new CarDial(carData);
         _carSteering = new CarSteering(carData, steeringWheel, frontWheels);
+        _carEngine = new CarEngine(carData, frontWheels);
 
         _carTransmissionManager.GenerateTransmission();
     }
@@ -28,8 +30,9 @@ public class CarBase : MonoBehaviour
     {
         _carIgnition.HandleIgnition();
         _carPedal.HandlePedals();
-        _carTransmissionManager.HandleTransmission();
+        _carTransmissionManager.UpdateTransmission();
         _carDial.UpdateDial();
+        _carEngine.UpdateMovement();
 
         float steeringInput = CarInputHandler.GetSteeringInput();
         _carSteering.UpdateSteering(steeringInput);

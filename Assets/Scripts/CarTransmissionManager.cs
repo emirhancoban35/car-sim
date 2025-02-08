@@ -1,29 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarTransmissionManager
 {
     private ITransmission _transmission;
     private CarData _carData;
-    
-    public CarTransmissionManager(CarData carData) => _carData = carData;
 
+    public CarTransmissionManager(CarData carData)
+    {
+        _carData = carData;
+        GenerateTransmission();
+    }
 
     public void GenerateTransmission()
     {
         _transmission = _carData.isManual ? new ManualTransmission(_carData) : new AutomaticTransmission(_carData);
     }
 
-    public void HandleTransmission()
+    public void UpdateTransmission()
     {
-        if (CarInputHandler.ShiftUpKey())
+        if (!_carData.isManual)
         {
-            _transmission.ShiftUp();
+            ((AutomaticTransmission)_transmission).UpdateTransmission();
         }
-           
-        
-        if (CarInputHandler.ShiftDownKey())
-            _transmission.ShiftDown();
+        else
+        {
+            if (CarInputHandler.ShiftUpKey())
+                _transmission.ShiftUp();
+            
+            if (CarInputHandler.ShiftDownKey())
+                _transmission.ShiftDown();
+        }
+
+        // if (CarInputHandler.SetDriveKey()) _carData.transmissionMode = TransmissionMode.Drive;
+        // if (CarInputHandler.SetNeutralKey()) _carData.transmissionMode = TransmissionMode.Neutral;
+        // if (CarInputHandler.SetReverseKey()) _carData.transmissionMode = TransmissionMode.Reverse;
     }
 }
