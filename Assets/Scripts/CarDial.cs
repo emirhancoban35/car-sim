@@ -24,6 +24,9 @@ public class CarDial
     private readonly float _heatDecreaseRate = 0.2f;
     private float _stallTimer = 0f;  // Stop etme için zamanlayıcı
     private float _stallDelay = 3f;  // Kaç saniye sonra stop etsin?
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     public CarDial(CarData carData)
@@ -43,6 +46,7 @@ public class CarDial
     }
 
     private void ResetCarState()
+<<<<<<< Updated upstream
     {
         _carData.tachometer = 0;
         _carData.currentSpeed = 0;
@@ -101,6 +105,53 @@ public class CarDial
     }
 
 =======
+>>>>>>> Stashed changes
+=======
+    {
+        _carData.tachometer = 0;
+        _carData.currentSpeed = 0;
+        _carData.isMotorRunning = false; // Oyun başında motor kapalı
+    }
+
+    private void UpdateTachometer()
+    {
+        if (!_carData.isMotorRunning)
+        {
+            _carData.tachometer = 0;
+            return;
+        }
+
+        float targetRPM;
+
+        if (_carData.isGasPressed)
+        {
+            _stallTimer = 0f; // Gaz verildiğinde stop sayacını sıfırla
+
+            if (_carData.gearStatus == 0) // Boş viteste gaz veriliyorsa
+            {
+                targetRPM = Mathf.Min(_carData.tachometer + (_accelerationRate * Time.deltaTime), _maxRPM);
+            }
+            else // Vitesteyken
+            {
+                targetRPM = Mathf.Lerp(_carData.tachometer, _carData.currentSpeed * _carData.gearStatus * _gearRatioFactor, Time.deltaTime * 3);
+            }
+        }
+        else // Gaz verilmezse
+        {
+            if (_carData.gearStatus == 0) // Boş viteste rölantiye düşmeli
+            {
+                targetRPM = Mathf.Max(_carData.tachometer - (_decelerationRate * Time.deltaTime), _idleRPM);
+            }
+            else // Vitesteyken gaz kesilirse motor yavaşlamalı ama rölanti altına düşmemeli
+            {
+                targetRPM = Mathf.Lerp(_carData.tachometer, _idleRPM + (_carData.currentSpeed * _gearRatioFactor), Time.deltaTime * 2);
+            }
+        }
+
+        // Devir sınırlandırma
+        _carData.tachometer = Mathf.Clamp(targetRPM, _idleRPM, _maxRPM);
+    }
+
 >>>>>>> Stashed changes
     private void UpdateSpeedometer()
     {
@@ -193,6 +244,41 @@ public class CarDial
         {
             _stallTimer = 0f; // Araç hareket ederse veya gaz verilirse sayaç sıfırla
         }
+
+        // *Gerçekçi manuel vites stop etme*
+        if (_carData.isManual && _carData.gearStatus > 0 && !_carData.isClutchPressed)
+        {
+            if (_carData.tachometer < _minRPMForStop) // Düşük devirdeyse
+            {
+                _stallTimer += Time.deltaTime;
+
+                if (_stallTimer >= _stallDelay) // 3 saniye bekle, stop et
+                {
+                    StopEngine("Düşük devirde motor stop etti!");
+                    return;
+                }
+            }
+        }
+        else
+        {
+            _stallTimer = 0f; // Debriyaja basılınca sayacı sıfırla
+        }
+
+        // *Hareketsiz halde stop etme*
+        if (_carData.isManual && _carData.gearStatus > 0 && !_carData.isGasPressed && _carData.currentSpeed < 0.1f)
+        {
+            _stallTimer += Time.deltaTime;
+
+            if (_stallTimer >= _stallDelay)
+            {
+                StopEngine("Hareketsiz kaldığı için motor stop etti!");
+                return;
+            }
+        }
+        else
+        {
+            _stallTimer = 0f; // Araç hareket ederse veya gaz verilirse sayaç sıfırla
+        }
     }
 
     private void StopEngine()
@@ -200,8 +286,11 @@ public class CarDial
         _carData.isMotorRunning = false;
         _carData.tachometer = 0;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Debug.Log("Motor stop etti!");
 =======
+=======
+>>>>>>> Stashed changes
         _carData.currentSpeed = 0; // Stop ettiğinde hız da sıfırlansın
         Debug.Log($"Motor stop etti: {reason}");
 >>>>>>> Stashed changes

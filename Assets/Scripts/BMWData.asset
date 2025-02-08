@@ -24,6 +24,9 @@ MonoBehaviour:
   tachometer: 0
   fuelLevel: 70
   temperatureIndicator: 43.640102
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   isClutchPressed: 0
   isBrakePressed: 0
@@ -32,7 +35,11 @@ MonoBehaviour:
   isHandbrakeApplied: 0
   isCarRunning: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   isMotorRunning: 1
+=======
+  isMotorRunning: 0
+>>>>>>> Stashed changes
 =======
   isMotorRunning: 0
 >>>>>>> Stashed changes
