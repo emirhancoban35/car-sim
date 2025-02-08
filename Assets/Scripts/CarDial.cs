@@ -13,10 +13,13 @@ public class CarDial
     private readonly float _overheatThreshold = 120f;
     private readonly float _heatIncreaseRate = 0.5f;
     private readonly float _heatDecreaseRate = 0.2f;
+    private float _stallTimer = 0f;  // Stop etme için zamanlayıcı
+    private float _stallDelay = 3f;  // Kaç saniye sonra stop etsin?
 
     public CarDial(CarData carData)
     {
         _carData = carData;
+        ResetCarState(); // Oyun başladığında sıfırla
     }
 
     public void UpdateDial()
@@ -28,6 +31,13 @@ public class CarDial
             UpdateTemperature();
             CheckForEngineStop();
         }
+    }
+
+    private void ResetCarState()
+    {
+        _carData.tachometer = 0;
+        _carData.currentSpeed = 0;
+        _carData.isMotorRunning = false; // Oyun başında motor kapalı
     }
 
     private void UpdateTachometer()
@@ -42,6 +52,8 @@ public class CarDial
 
         if (_carData.isGasPressed)
         {
+            _stallTimer = 0f; // Gaz verildiğinde stop sayacını sıfırla
+
             if (_carData.gearStatus == 0) // Boş viteste gaz veriliyorsa
             {
                 targetRPM = Mathf.Min(_carData.tachometer + (_accelerationRate * Time.deltaTime), _maxRPM);
@@ -66,7 +78,6 @@ public class CarDial
         // Devir sınırlandırma
         _carData.tachometer = Mathf.Clamp(targetRPM, _idleRPM, _maxRPM);
     }
-
 
     private void UpdateSpeedometer()
     {
@@ -107,16 +118,45 @@ public class CarDial
             return;
         }
 
-        if (_carData.isManual && _carData.gearStatus > 0 && _carData.tachometer < _minRPMForStop && !_carData.isClutchPressed)
-        {
-            StopEngine("Düşük devirde motor stop etti!");
-            return;
-        }
-
         if (_carData.temperatureIndicator >= _overheatThreshold)
         {
             StopEngine("Motor hararet yaptı!");
             return;
+        }
+
+        // **Gerçekçi manuel vites stop etme**
+        if (_carData.isManual && _carData.gearStatus > 0 && !_carData.isClutchPressed)
+        {
+            if (_carData.tachometer < _minRPMForStop) // Düşük devirdeyse
+            {
+                _stallTimer += Time.deltaTime;
+
+                if (_stallTimer >= _stallDelay) // 3 saniye bekle, stop et
+                {
+                    StopEngine("Düşük devirde motor stop etti!");
+                    return;
+                }
+            }
+        }
+        else
+        {
+            _stallTimer = 0f; // Debriyaja basılınca sayacı sıfırla
+        }
+
+        // **Hareketsiz halde stop etme**
+        if (_carData.isManual && _carData.gearStatus > 0 && !_carData.isGasPressed && _carData.currentSpeed < 0.1f)
+        {
+            _stallTimer += Time.deltaTime;
+
+            if (_stallTimer >= _stallDelay)
+            {
+                StopEngine("Hareketsiz kaldığı için motor stop etti!");
+                return;
+            }
+        }
+        else
+        {
+            _stallTimer = 0f; // Araç hareket ederse veya gaz verilirse sayaç sıfırla
         }
     }
 
@@ -124,6 +164,7 @@ public class CarDial
     {
         _carData.isMotorRunning = false;
         _carData.tachometer = 0;
+        _carData.currentSpeed = 0; // Stop ettiğinde hız da sıfırlansın
         Debug.Log($"Motor stop etti: {reason}");
     }
 
