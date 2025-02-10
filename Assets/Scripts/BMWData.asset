@@ -16,16 +16,32 @@ MonoBehaviour:
   carName: 
   carKm: 0
   carYear: 
-  currentSpeed: 0
-  tachometer: 800
-  fuelLevel: 70
-  temperatureIndicator: 64.1181
   isClutchPressed: 0
   isBrakePressed: 0
   isGasPressed: 0
-  transmissionMode: 1
-  isHandbrakeApplied: 0
-  isCarRunning: 1
-  isMotorRunning: 1
-  gearStatus: 0
-  isManual: 1
+  isManual: 0
+  gearStatus: 1
+  maxGearCount: 0
+  transmissionMode: 0
+  CarEngine:
+    horsepower: 1.2
+    torque: 0
+    engineCapacity: 0
+    maxRPM: 0
+    idleRPM: 800
+    fuelConsumption: 0
+    brakePower: 0
+    suspensionStiffness: 0
+  carDial:
+    currentSpeed: 0
+    tachometer: 0
+    fuelLevel: 100
+    temperatureIndicator: 0
+  carInterior:
+    isHandbrakeApplied: 0
+    isCarRunning: 1
+    isMotorRunning: 0
+    isDoorOpen: 0
+    isInteriorLightOn: 0
+    isACOn: 0
+    acTemperature: 0
