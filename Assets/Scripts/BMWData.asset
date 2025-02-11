@@ -13,19 +13,35 @@ MonoBehaviour:
   m_Name: BMWData
   m_EditorClassIdentifier: 
   isTestMode: 0
-  carName: 
-  carKm: 0
-  carYear: 
-  currentSpeed: 0
-  tachometer: 800
-  fuelLevel: 70
-  temperatureIndicator: 64.1181
+  carName: BMW 316i
+  carKm: 295721
+  carYear: 2006
   isClutchPressed: 0
   isBrakePressed: 0
   isGasPressed: 0
-  transmissionMode: 1
-  isHandbrakeApplied: 0
-  isCarRunning: 1
-  isMotorRunning: 1
-  gearStatus: 0
   isManual: 1
+  gearStatus: 0
+  gearRatios: 5
+  transmissionMode: 0
+  CarEngine:
+    horsepower: 143
+    maxTorque: 190
+    engineCapacity: 1.995
+    maxRPM: 6.5
+    idleRPM: 800
+    fuelConsumption: 7.9
+    brakePower: 300
+    suspensionStiffness: 0.5
+  carDial:
+    currentSpeed: 0
+    tachometer: 6.5
+    fuelLevel: 100
+    temperatureIndicator: 0
+  carInterior:
+    isHandbrakeApplied: 0
+    isCarRunning: 1
+    isMotorRunning: 1
+    isDoorOpen: 0
+    isInteriorLightOn: 0
+    isACOn: 0
+    acTemperature: 0
