@@ -21,7 +21,7 @@ MonoBehaviour:
   isManual: 1
   gearStatus: 1
   gearRatios: 5
-  transmissionMode: 2
+  transmissionMode: 1
   CarEngine:
     horsepower: 140
     maxTorque: 190
@@ -32,9 +32,9 @@ MonoBehaviour:
     brakePower: 8000
     suspensionStiffness: 0.5
   carDial:
-    currentSpeed: 0.11051949
-    tachometer: 800
-    fuelLevel: 4
+    currentSpeed: 53.322903
+    tachometer: 845.42426
+    fuelLevel: 100
     temperatureIndicator: 132.91
   carInterior:
     isHandbrakeApplied: 0

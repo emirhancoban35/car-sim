@@ -10,17 +10,20 @@ public class CarController : MonoBehaviour
     private CarSteering _carSteering;
     private CarEngineController _carEngineController;
 
+    private Rigidbody _carRigidBody;
+
     [Header("Steering")]
     [SerializeField] private Transform steeringWheel;
     [SerializeField] private WheelCollider[] frontWheels;
 
     private void Awake()
     {
+        _carRigidBody = gameObject.GetComponent<Rigidbody>();
         _carIgnition = new CarIgnition(carData);
         _carPedal = new CarPedal(carData);
         _carTransmissionManager = new CarTransmissionManager(carData);
         _carSteering = new CarSteering(carData, steeringWheel, frontWheels);
-        _carEngineController = new CarEngineController(carData);
+        _carEngineController = new CarEngineController(carData , _carRigidBody);
         _carMovementController = new CarMovementController(carData, frontWheels);
 
         _carTransmissionManager.GenerateTransmission();

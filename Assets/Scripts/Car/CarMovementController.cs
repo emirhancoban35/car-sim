@@ -5,9 +5,10 @@ public class CarMovementController
     private readonly CarData _carData;
     private readonly WheelCollider[] _wheelColliders;
 
-    private const float MaxTorque = 500f; 
-    private const float BrakeForce = 6000f; 
-    private const float ReverseTorqueMultiplier = 0.5f; 
+    private const float MaxTorque = 500f;
+    private const float BrakeForce = 6000f;
+    private const float ReverseTorqueMultiplier = 0.5f;
+    private const float ClutchEngagementThreshold = 0.1f;
 
     public CarMovementController(CarData carData, WheelCollider[] wheelColliders)
     {
@@ -33,7 +34,12 @@ public class CarMovementController
     private float CalculateMotorTorque()
     {
         if (!_carData.isGasPressed) return 0f;
-        
+
+        if (_carData.isClutchPressed)
+        {
+            return 0f; // Debriyaja basılıysa motor tekerleklere güç vermez
+        }
+
         if (_carData.isManual)
         {
             if (_carData.gearStatus == 255) // Geri vites

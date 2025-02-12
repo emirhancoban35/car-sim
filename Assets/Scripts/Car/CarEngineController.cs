@@ -3,16 +3,19 @@ using UnityEngine;
 public class CarEngineController
 {
     private readonly CarData _carData;
+    private readonly Rigidbody _rigidbody;
     private float _stallTimer = 0f;
     
     private const float StallDelay = 3f;
     private const float MinRPMForStop = 500f;
     private const float AirResistance = 0.02f;
     private const float RollingResistance = 0.015f;
+    private const float RevLimiterRPM = 6500f; // Kesici devri
     
-    public CarEngineController(CarData carData)
+    public CarEngineController(CarData carData, Rigidbody rigidbody)
     {
         _carData = carData;
+        _rigidbody = rigidbody;
     }
 
     public void UpdateEngine()
@@ -32,14 +35,14 @@ public class CarEngineController
         {
             _stallTimer = 0f;
             float accelerationFactor = _carData.CarEngine.horsepower * 50f;
-            targetRPM = Mathf.Min(_carData.carDial.tachometer + accelerationFactor * Time.deltaTime, _carData.CarEngine.maxRPM);
+            targetRPM = Mathf.Min(_carData.carDial.tachometer + accelerationFactor * Time.deltaTime, RevLimiterRPM);
         }
         else
         {
             targetRPM = Mathf.Lerp(_carData.carDial.tachometer, _carData.CarEngine.idleRPM, Time.deltaTime * 2);
         }
 
-        _carData.carDial.tachometer = Mathf.Clamp(targetRPM, _carData.CarEngine.idleRPM, _carData.CarEngine.maxRPM);
+        _carData.carDial.tachometer = Mathf.Clamp(targetRPM, _carData.CarEngine.idleRPM, RevLimiterRPM);
     }
 
     private void UpdateSpeed()
@@ -53,7 +56,7 @@ public class CarEngineController
         float wheelForce = engineTorque * GetCurrentGearRatio() * 0.1f;
         float resistance = _carData.carDial.currentSpeed * (_carData.carDial.currentSpeed * AirResistance + RollingResistance);
 
-        if (_carData.isGasPressed)
+        if (_carData.isGasPressed && _carData.carDial.tachometer < RevLimiterRPM)
         {
             _carData.carDial.currentSpeed += wheelForce * Time.deltaTime;
         }
@@ -63,11 +66,14 @@ public class CarEngineController
         }
 
         _carData.carDial.currentSpeed = Mathf.Max(0, _carData.carDial.currentSpeed);
+
+        // Rigidbody ile hız hesaplaması
+        _carData.carDial.currentSpeed = _rigidbody.velocity.magnitude * 3.6f;
     }
 
     private void CheckForEngineStop()
     {
-        if (_carData.carDial.tachometer < MinRPMForStop && !_carData.isClutchPressed)
+        if (_carData.carDial.tachometer < MinRPMForStop && !_carData.isClutchPressed && _carData.transmissionMode != TransmissionMode.Neutral)
         {
             _stallTimer += Time.deltaTime;
             if (_stallTimer >= StallDelay)
