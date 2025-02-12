@@ -4,9 +4,9 @@ public class CarEngineController
 {
     private readonly CarData _carData;
     private float _stallTimer = 0f;
+    
     private const float StallDelay = 3f;
     private const float MinRPMForStop = 500f;
-    private const float IdleRPM = 900f;
     private const float AirResistance = 0.02f;
     private const float RollingResistance = 0.015f;
     
@@ -18,7 +18,7 @@ public class CarEngineController
     public void UpdateEngine()
     {
         if (!_carData.carInterior.isMotorRunning) return;
-        
+
         UpdateTachometer();
         UpdateSpeed();
         CheckForEngineStop();
@@ -27,25 +27,32 @@ public class CarEngineController
     private void UpdateTachometer()
     {
         float targetRPM;
+        
         if (_carData.isGasPressed)
         {
             _stallTimer = 0f;
-            targetRPM = Mathf.Min(_carData.carDial.tachometer + 3000f * Time.deltaTime, _carData.CarEngine.maxRPM);
+            float accelerationFactor = _carData.CarEngine.horsepower * 50f;
+            targetRPM = Mathf.Min(_carData.carDial.tachometer + accelerationFactor * Time.deltaTime, _carData.CarEngine.maxRPM);
         }
         else
         {
-            targetRPM = Mathf.Lerp(_carData.carDial.tachometer, IdleRPM, Time.deltaTime * 2);
+            targetRPM = Mathf.Lerp(_carData.carDial.tachometer, _carData.CarEngine.idleRPM, Time.deltaTime * 2);
         }
 
-        _carData.carDial.tachometer = Mathf.Clamp(targetRPM, IdleRPM, _carData.CarEngine.maxRPM);
+        _carData.carDial.tachometer = Mathf.Clamp(targetRPM, _carData.CarEngine.idleRPM, _carData.CarEngine.maxRPM);
     }
 
     private void UpdateSpeed()
     {
+        if (_carData.transmissionMode == TransmissionMode.Neutral || _carData.transmissionMode == TransmissionMode.Park)
+        {
+            return; // N ve P modunda hız değişmez.
+        }
+
         float engineTorque = _carData.CarEngine.maxTorque * (_carData.carDial.tachometer / _carData.CarEngine.maxRPM);
         float wheelForce = engineTorque * GetCurrentGearRatio() * 0.1f;
         float resistance = _carData.carDial.currentSpeed * (_carData.carDial.currentSpeed * AirResistance + RollingResistance);
-        
+
         if (_carData.isGasPressed)
         {
             _carData.carDial.currentSpeed += wheelForce * Time.deltaTime;
@@ -54,14 +61,12 @@ public class CarEngineController
         {
             _carData.carDial.currentSpeed -= resistance * Time.deltaTime;
         }
-        
+
         _carData.carDial.currentSpeed = Mathf.Max(0, _carData.carDial.currentSpeed);
     }
 
     private void CheckForEngineStop()
     {
-        if (_carData.isTestMode) return;
-
         if (_carData.carDial.tachometer < MinRPMForStop && !_carData.isClutchPressed)
         {
             _stallTimer += Time.deltaTime;
@@ -88,7 +93,7 @@ public class CarEngineController
     {
         if (_carData.isManual)
         {
-            return _carData.gearStatus > 0 ? 2.5f / _carData.gearStatus : 0.0f;
+            return _carData.gearStatus > 0 ? 3.0f / _carData.gearStatus : 0.0f;
         }
         else
         {

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd99401ea8c0fcf408d39626672c617d, type: 3}
   m_Name: BMWData
   m_EditorClassIdentifier: 
-  isTestMode: 0
   carName: BMW 316i
   carKm: 295721
   carYear: 2006
@@ -20,23 +19,23 @@ MonoBehaviour:
   isBrakePressed: 0
   isGasPressed: 0
   isManual: 1
-  gearStatus: 0
+  gearStatus: 1
   gearRatios: 5
-  transmissionMode: 0
+  transmissionMode: 2
   CarEngine:
-    horsepower: 143
+    horsepower: 140
     maxTorque: 190
     engineCapacity: 1.995
-    maxRPM: 6.5
+    maxRPM: 6500
     idleRPM: 800
     fuelConsumption: 7.9
-    brakePower: 300
+    brakePower: 8000
     suspensionStiffness: 0.5
   carDial:
-    currentSpeed: 0
-    tachometer: 6.5
-    fuelLevel: 100
-    temperatureIndicator: 0
+    currentSpeed: 0.11051949
+    tachometer: 800
+    fuelLevel: 4
+    temperatureIndicator: 132.91
   carInterior:
     isHandbrakeApplied: 0
     isCarRunning: 1

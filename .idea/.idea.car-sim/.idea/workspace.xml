@@ -5,45 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0f4a8f3-96b3-4827-9e3f-6b4cfb2945cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarDial.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarDial.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarEngine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarEngine.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarInterior.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarInterior.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/EsgalBmw318ti.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/EsgalBmw318ti.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AutomaticTransmission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/AutomaticTransmission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AutomaticTransmission.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/AutomaticTransmission.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BMWData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarDialCaltuc.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarDial.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarDialCaltuc.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarEngine.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarIgnition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarIgnition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarIgnition.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarInputHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarInputHandler.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarPedal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarPedal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarPedal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarPedal.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarSteering.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarSteering.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarSteering.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarSteering.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarTransmissionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/CarTransmissionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CarTransmissionManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/CarTransmissionManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ITransmission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/ITransmission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ITransmission.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/ITransmission.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualTransmission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/ManualTransmission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ManualTransmission.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/ManualTransmission.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TransmissionMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/TransmissionMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TransmissionMode.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Tranmission/TransmissionMode.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/Data/CarData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +116,8 @@
       <workItem from="1739027516371" duration="1362000" />
       <workItem from="1739189749391" duration="7965000" />
       <workItem from="1739208403654" duration="67000" />
+      <workItem from="1739362138618" duration="580000" />
+      <workItem from="1739363635008" duration="10585000" />
     </task>
     <servers />
   </component>
