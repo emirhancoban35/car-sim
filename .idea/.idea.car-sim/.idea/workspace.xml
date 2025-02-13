@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c0f4a8f3-96b3-4827-9e3f-6b4cfb2945cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.car-sim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarEngineController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Car/CarMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Car/CarMovementController.cs" afterDir="false" />
     </list>
@@ -120,6 +119,7 @@
       <workItem from="1739362138618" duration="580000" />
       <workItem from="1739363635008" duration="10585000" />
       <workItem from="1739384005245" duration="2590000" />
+      <workItem from="1739448236091" duration="2959000" />
     </task>
     <servers />
   </component>
