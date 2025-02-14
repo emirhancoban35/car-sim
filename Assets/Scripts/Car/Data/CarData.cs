@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CarData", menuName = "ScriptableObjects/Create New", order = 0)]
 public class CarData : ScriptableObject
 {
-    public bool isTestMode;
-    
     [Header("Car Info")]
     public string carName;
     public uint carKm;

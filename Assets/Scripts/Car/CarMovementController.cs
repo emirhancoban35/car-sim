@@ -4,12 +4,12 @@ public class CarMovementController
 {
     private readonly CarData _carData;
     private readonly WheelCollider[] _wheelColliders;
-    
-    private const float MaxTorque = 500f; // Motor torku
-    private const float BrakeForce = 6000f; // Frenleme gücü
-    private const float IdleRPM = 900f; // Rölanti devri
-    private const float MinRPMForStop = 500f; // Stop etme deviri
-    
+
+    private const float MaxTorque = 500f;
+    private const float BrakeForce = 6000f;
+    private const float ReverseTorqueMultiplier = 0.5f;
+    private const float ClutchEngagementThreshold = 0.1f;
+
     public CarMovementController(CarData carData, WheelCollider[] wheelColliders)
     {
         _carData = carData;
@@ -23,34 +23,41 @@ public class CarMovementController
             ApplyBrakes(BrakeForce * 0.5f);
             return;
         }
-        
+
         float motorTorque = CalculateMotorTorque();
         float brakeForce = _carData.isBrakePressed ? BrakeForce : 0f;
-        
+
         ApplyTorque(motorTorque);
         ApplyBrakes(brakeForce);
     }
-    
+
     private float CalculateMotorTorque()
     {
         if (!_carData.isGasPressed) return 0f;
-        
-        float gearRatio = _carData.isManual ? GetGearRatioManual() : GetGearRatioAuto();
-        float torque = (_carData.carDial.tachometer / 1000f) * MaxTorque * gearRatio;
-        
-        return Mathf.Clamp(torque, 0, MaxTorque);
+
+        if (_carData.isClutchPressed)
+        {
+            return 0f; // Debriyaja basılıysa motor tekerleklere güç vermez
+        }
+
+        if (_carData.isManual)
+        {
+            if (_carData.gearStatus == 255) // Geri vites
+                return -MaxTorque * ReverseTorqueMultiplier;
+            if (_carData.gearStatus > 0) // İleri vitesler
+                return MaxTorque * (1f - (_carData.gearStatus * 0.1f));
+        }
+        else
+        {
+            if (_carData.transmissionMode == TransmissionMode.Reverse)
+                return -MaxTorque * ReverseTorqueMultiplier;
+            if (_carData.transmissionMode == TransmissionMode.Drive)
+                return MaxTorque * (1f - (_carData.carDial.currentSpeed / 200f));
+        }
+
+        return 0f;
     }
-    
-    private float GetGearRatioManual()
-    {
-        return 1f - ((float)_carData.gearStatus * 0.1f);
-    }
-    
-    private float GetGearRatioAuto()
-    {
-        return 1f - (_carData.carDial.currentSpeed / 200f);
-    }
-    
+
     private void ApplyTorque(float torque)
     {
         foreach (var wheel in _wheelColliders)
@@ -58,7 +65,7 @@ public class CarMovementController
             wheel.motorTorque = torque;
         }
     }
-    
+
     private void ApplyBrakes(float force)
     {
         foreach (var wheel in _wheelColliders)
