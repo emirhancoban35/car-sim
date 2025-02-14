@@ -1,57 +1,65 @@
 using UnityEngine;
-using System.Collections;
 
-public class DoorController : MonoBehaviour
+/// <summary>
+/// Kullanıcı kapıya tıkladığında açma ve kapama işlemini yöneten sınıf.
+/// </summary>
+[RequireComponent(typeof(HingeJoint))]
+public class CarDoorController : MonoBehaviour
 {
-    public float openAngle = -90f; // Kapı dışa doğru açılacak
-    public float smoothSpeed = 2f; // Açılıp kapanma hızı
+    [Header("Kapı Açılma Ayarları")]
+    [SerializeField] private float openAngle = 90f;       // Kapının açılma açısı
+    [SerializeField] private float closeAngle = 0f;       // Kapının kapanma açısı
+    [SerializeField] private float motorForce = 100f;     // Kapıyı açmak için uygulanacak kuvvet
+    [SerializeField] public float motorSpeed = 90f;      // Motorun hızı (derece/saniye)
 
-    private Quaternion closedRotation; // Kapının kapalı olduğu rotasyon
-    private Quaternion openRotation; // Kapının açık olduğu rotasyon
-    private bool isOpen = false; // Kapının açık olup olmadığını tutan flag
-    private Coroutine doorCoroutine; // Aktif coroutine'i tutmak için
+    private HingeJoint _hingeJoint;
+    private bool _isOpen = false;
 
-    private Rigidbody rb; // Kapının Rigidbody bileşeni
-
-    void Start()
+    private void Awake()
     {
-        // Rigidbody bileşenini al
-        rb = GetComponent<Rigidbody>();
-
-        // Kapının başlangıç rotasyonunu (kapalı durumu) kaydet
-        closedRotation = transform.rotation;
-        // Kapının açık durumdaki rotasyonunu hesapla
-        openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
+        _hingeJoint = GetComponent<HingeJoint>();
+        ConfigureHingeJoint();
     }
 
-    void OnMouseDown() // Fare ile tıklama kontrolü
+    /// <summary>
+    /// HingeJoint bileşenini ayarlar.
+    /// </summary>
+    private void ConfigureHingeJoint()
+    {
+        JointLimits limits = _hingeJoint.limits;
+        limits.min = closeAngle;
+        limits.max = openAngle;
+        _hingeJoint.limits = limits;
+        _hingeJoint.useLimits = true;
+    }
+
+    /// <summary>
+    /// Kapıya fare ile tıklanınca çağrılır.
+    /// </summary>
+    private void OnMouseDown()
     {
         ToggleDoor();
     }
 
-    void ToggleDoor()
+    /// <summary>
+    /// Kapıyı açıp kapatan fonksiyon.
+    /// </summary>
+    public void ToggleDoor()
     {
-        // Eğer bir coroutine çalışıyorsa durdur
-        if (doorCoroutine != null)
-        {
-            StopCoroutine(doorCoroutine);
-        }
-
-        // Kapının durumunu tersine çevir ve coroutine başlat
-        isOpen = !isOpen;
-        doorCoroutine = StartCoroutine(MoveDoor(isOpen ? openRotation : closedRotation));
+        _isOpen = !_isOpen;
+        SetDoorMotor(_isOpen ? motorSpeed : -motorSpeed);
     }
 
-    IEnumerator MoveDoor(Quaternion targetRotation)
+    /// <summary>
+    /// Kapının motor hızını ayarlar.
+    /// </summary>
+    /// <param name="speed">Kapının döneceği hız.</param>
+    private void SetDoorMotor(float speed)
     {
-        // Kapıyı hedef rotasyona doğru yumuşak bir şekilde hareket ettir
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        {
-            rb.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, smoothSpeed * Time.deltaTime));
-            yield return null; // Bir sonraki frame'e kadar bekle
-        }
-
-        // Kapıyı tam olarak hedef rotasyona ayarla
-        rb.MoveRotation(targetRotation);
+        JointMotor motor = _hingeJoint.motor;
+        motor.force = motorForce;
+        motor.targetVelocity = speed;
+        _hingeJoint.motor = motor;
+        _hingeJoint.useMotor = true;
     }
 }
