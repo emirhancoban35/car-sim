@@ -2201,6 +2201,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1174413729621135970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2686448952290711479}
+  - component: {fileID: 5507138033994979324}
+  m_Layer: 0
+  m_Name: Seats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2686448952290711479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174413729621135970}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.00000002107343, z: -0.000000021073422, w: 1}
+  m_LocalPosition: {x: 0, y: -4.6545854, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3806535692309946375}
+  m_Father: {fileID: 1972777524733469430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5507138033994979324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174413729621135970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa40443fd734bfa46ac465902f4c1cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1181967705367449968
 GameObject:
   m_ObjectHideFlags: 0
@@ -6093,7 +6138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7347670322683333281}
   - component: {fileID: 2223470817768934503}
-  - component: {fileID: 3396094935049550403}
   m_Layer: 6
   m_Name: SeatCollider
   m_TagString: Untagged
@@ -6137,22 +6181,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.04, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3396094935049550403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3148782101626771948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f2ca3e21ecf501499ded739cb3d0f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carSeat: {fileID: 7347670322683333281}
-  player: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
-  car: {fileID: 5334749699723957399}
-  carCameraPosition: {fileID: 7507809379143749629}
 --- !u!1 &3151959215655694745
 GameObject:
   m_ObjectHideFlags: 0
@@ -12279,6 +12307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806535692309946375}
+  - component: {fileID: 3547541685473191968}
   m_Layer: 0
   m_Name: Driver_seat
   m_TagString: Untagged
@@ -12294,16 +12323,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191811613419155322}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.00000002107343, z: -0.000000021073422, w: 1}
-  m_LocalPosition: {x: 0, y: -4.6545854, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8429920435579403192}
   - {fileID: 7507809379143749629}
   - {fileID: 7347670322683333281}
-  m_Father: {fileID: 1972777524733469430}
+  m_Father: {fileID: 2686448952290711479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3547541685473191968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191811613419155322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0725f7ceea682547b559cd8eb8adee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seatPosition: {fileID: 7507809379143749629}
 --- !u!1 &6225175773122789890
 GameObject:
   m_ObjectHideFlags: 0
@@ -16804,7 +16846,7 @@ Transform:
   - {fileID: 4749351669881642152}
   - {fileID: 5146810410794871602}
   - {fileID: 256913861358317453}
-  - {fileID: 3806535692309946375}
+  - {fileID: 2686448952290711479}
   - {fileID: 7287481395179851759}
   - {fileID: 7935167354568004854}
   - {fileID: 6422745269741046903}
