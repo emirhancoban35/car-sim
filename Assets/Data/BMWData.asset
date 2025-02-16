@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd99401ea8c0fcf408d39626672c617d, type: 3}
+  m_Name: BMWData
+  m_EditorClassIdentifier: 
+  carName: BMW 316i
+  carKm: 295721
+  carYear: 2006
+  isClutchPressed: 0
+  isBrakePressed: 0
+  isGasPressed: 0
+  isManual: 1
+  gearStatus: 1
+  gearRatios: 5
+  transmissionMode: 1
+  CarEngine:
+    horsepower: 140
+    maxTorque: 190
+    engineCapacity: 1.995
+    maxRPM: 6500
+    idleRPM: 800
+    fuelConsumption: 7.9
+    brakePower: 8000
+    suspensionStiffness: 0.5
+  carDial:
+    currentSpeed: 53.322903
+    tachometer: 845.42426
+    fuelLevel: 100
+    temperatureIndicator: 132.91
+  carInterior:
+    isHandbrakeApplied: 0
+    isCarRunning: 1
+    isMotorRunning: 1
+    isDoorOpen: 0
+    isInteriorLightOn: 0
+    isACOn: 0
+    acTemperature: 0
